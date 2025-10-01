@@ -1,16 +1,24 @@
+#include <windows.h>
+#include <tchar.h>
 #include <stdio.h>
-#include "fokker_f28_constants.h"
-#include "funcs.h"
+#include "SimConnect.h"
+
+static HANDLE hSimConnect = NULL;
+
+typedef struct {
+    double latitude;
+    double longitude;
+    double altitude;
+} AircraftData;
 
 
 int main(void) {
-    printf("Enter flight distance (nautical miles): ");
-    double distance_nm;
-    scanf("%lf", &distance_nm);
 
-    double fuel_needed = calculate_fuel(distance_nm);
+    HRESULT hr;
 
-    printf("Fuel needed: %.2f kg\n", fuel_needed);
+    if (SUCCEEDED(SimConnect_Open(&hSimConnect, "SimConnect Example", NULL, 0, 0, 0))) {
+        printf("SimConnect opened\n");
+    }
 
     return 0;
 }

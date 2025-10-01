@@ -147,8 +147,8 @@ info:
 help: info
 
 # Зависимости для автоматической пересборки при изменении заголовков
-$(OBJDIR)/index.o: $(SRCDIR)/fokker_f28_constants.h $(SRCDIR)/funcs.h
-$(OBJDIR)/funcs.o: $(SRCDIR)/fokker_f28_constants.h
+$(OBJDIR)/index.o: $(SRCDIR)/fokker_f28_constants.h $(SRCDIR)/fuel_calculate.h
+$(OBJDIR)/fuel_calculate.o: $(SRCDIR)/fokker_f28_constants.h
 
 # Предотвращение удаления промежуточных файлов
 .PRECIOUS: $(OBJDIR)/%.o
